@@ -20,22 +20,18 @@
           <a class="nav-link active" aria-current="page" href="#">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Link</a>
-        </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Dropdown
-          </a>
-          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <li><a class="dropdown-item" href="#">Action</a></li>
-            <li><a class="dropdown-item" href="#">Another action</a></li>
-            <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item" href="#">Something else here</a></li>
-          </ul>
+          <a class="nav-link" href="{% url 'add_student' %}">Add student</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+          <a class="nav-link" href="{% url 'add_teacher' %}">Add teacher</a>
         </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'add_course' %}">Add course</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'add_group' %}">Add group</a>
+        </li>
+
       </ul>
       <form class="d-flex">
         <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
@@ -57,7 +53,6 @@
     <thead>
     <tr>
         <th scope="col">SpaceID</th>
-        <th scope='col'>Password</th>
         <th scope="col">First</th>
         <th scope="col">Last</th>
         <th scope="col">Group</th>
@@ -67,7 +62,6 @@
     {% for s in students %}
     <tr>
         <th scope="row">{{ s.username }}</th>
-        <td>{{ s.password }}</td>
         <td>{{ s.first_name }}</td>
         <td>{{ s.last_name }}</td>
         <td>{{ s.group.name}}</td>

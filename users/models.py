@@ -22,6 +22,7 @@ class CustomUser(AbstractUser):
 class Teacher(CustomUser):
     rating = models.IntegerField(default=1)
     salary = models.IntegerField(default=0)
+    phone = models.CharField(max_length=13)
 
 
 class Course(models.Model):
