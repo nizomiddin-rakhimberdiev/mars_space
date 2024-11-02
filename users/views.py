@@ -5,7 +5,7 @@ from sqlite3 import connect
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
 
-from users.forms import AddStudentForm, AddTeacherForm, AddCourseForm, AddGroupForm
+from users.forms import AddStudentForm, AddTeacherForm, AddCourseForm, AddGroupForm, EditTeacherForm
 from users.models import Student, Teacher, Course
 
 
@@ -108,3 +108,20 @@ def login_view(request):
 def logout_view(request):
     logout(request)
     return redirect('login')
+
+
+def teachers_view(request):
+    teachers = Teacher.objects.all()
+    context = {'teachers': teachers}
+    return render(request, 'teachers.html', context)
+
+
+def edit_teacher_view(request, id):
+    teacher = Teacher.objects.get(id=id)
+    if request.method == 'POST':
+        form = EditTeacherForm(request.POST, instance=teacher)
+        if form.is_valid():
+            form.save()
+            return redirect('teachers')
+    form = EditTeacherForm(instance=teacher)
+    return render(request, 'edit_teacher.html', {'form': form})

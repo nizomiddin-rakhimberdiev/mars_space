@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container py-3">
+    <h1>Students</h1>
+
+
+    <table class="table">
+        <thead>
+        <tr>
+            <th scope="col">Username</th>
+            <th scope="col">First</th>
+            <th scope="col">Last</th>
+            <th scope="col">phone</th>
+            <th scope="col">rating</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for t in teachers %}
+        <tr>
+            <th scope="row">{{ t.username }}</th>
+            <td>{{ t.first_name }}</td>
+            <td>{{ t.last_name }}</td>
+            <td>{{ t.phone }}</td>
+            <td>{{ t.rating }}</td>
+            <td><a href="{% url 'edit_teacher' t.id %}">Edit</a></td>
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+</div>
+{% endblock %}

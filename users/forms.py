@@ -24,3 +24,9 @@ class AddGroupForm(forms.ModelForm):
     class Meta:
         model = Group
         fields = ['name', 'teacher', 'course', 'day', 'start_date', 'end_date', 'lesson_time']
+
+
+class EditTeacherForm(forms.ModelForm):
+    class Meta:
+        model = Teacher
+        fields = ['first_name', 'last_name', 'phone', 'username']
